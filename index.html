@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>World Gacha · 复刻实验室</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; padding: 56px 24px 64px;
+    background: radial-gradient(1200px 600px at 50% -10%, #1e2733 0%, #0f1318 60%, #0b0e12 100%);
+    color: #e9e6df;
+    font: 15px/1.65 system-ui, -apple-system, "Hiragino Sans", "Microsoft YaHei", sans-serif;
+  }
+  .wrap { max-width: 1060px; margin: 0 auto; }
+  .kicker { color: #e07b39; font-size: 11px; letter-spacing: .28em; font-weight: 700; }
+  h1 { margin: 8px 0 6px; font-size: 34px; letter-spacing: .02em; }
+  .lede { margin: 0 0 8px; color: #9aa3ad; max-width: 760px; }
+  .meta { margin: 0 0 34px; color: #6f7a86; font-size: 12px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+  a.card {
+    display: block; padding: 18px 18px 16px; border-radius: 14px; text-decoration: none;
+    background: linear-gradient(180deg, rgba(38,46,57,.85), rgba(24,29,37,.9));
+    border: 1px solid rgba(255,255,255,.08);
+    color: inherit; transition: transform .12s ease, border-color .12s ease;
+  }
+  a.card:hover { transform: translateY(-2px); border-color: rgba(224,123,57,.55); }
+  .card h2 { margin: 0 0 6px; font-size: 16px; }
+  .card p { margin: 0; color: #9aa3ad; font-size: 12.5px; }
+  .tag { display: inline-block; margin-top: 12px; padding: 2px 8px; border-radius: 999px;
+         font-size: 10.5px; letter-spacing: .04em; background: #2a3341; color: #b9c4d0; }
+  .tag.ok { background: #1f3a2c; color: #8fd0a8; }
+  .tag.no { background: #3a2527; color: #e0a0a0; }
+  .note {
+    margin-top: 22px; padding: 14px 16px; border-radius: 12px;
+    border: 1px solid rgba(224,123,57,.25); background: rgba(224,123,57,.07);
+    color: #c9b8a8; font-size: 12.5px;
+  }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: #e7c9a8; }
+  .foot { margin-top: 30px; color: #5f6a76; font-size: 11.5px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">LOCAL STUDY LAB</div>
+  <h1>ワールドガチャ · 复刻实验室</h1>
+  <p class="lede">
+    原版离线镜像、逐语句拆解的可读版、可挂 Mod 的播放页，以及一份从零写的净室重建。
+    所有生成都在本地完成，无后端。
+  </p>
+  <p class="meta">原版 © 2026 MIYADAIKU · 仅限本机学习，请勿分发 · three.js r170 (MIT)<br><span style="opacity:.75">公开仓库不含 ① 原版镜像与 ② 拆解版；它们只存在于本机快照。</span></p>
+
+  <div class="grid">
+    <a class="card" href="./vendor/">
+      <h2>① 原版镜像</h2>
+      <p>线上页面的离线副本，逐字节一致。用来对照行为。</p>
+      <span class="tag no">不可分发</span>
+    </a>
+    <a class="card" href="./study/">
+      <h2>② 拆解版</h2>
+      <p>150 条顶层语句 → 38 个可读模块，行为与原版相同。</p>
+      <span class="tag ok">已通过像素级对比</span>
+    </a>
+    <a class="card" href="./study/play.html?mods=ink-theme,sky-cam,svg-shot">
+      <h2>③ Mod 播放页</h2>
+      <p>外挂脚本改配色、加相机、加 SVG 导出按钮，演示二创接口。</p>
+      <span class="tag">依赖原版</span>
+    </a>
+    <a class="card" href="./mini/">
+      <h2>④ 净室重建</h2>
+      <p>种子 → 地形 → 街区 → 体块 → 线/网点。代码归你。</p>
+      <span class="tag ok">MIT · 可发布</span>
+    </a>
+  </div>
+
+  <div class="note">
+    世界生成默认在 <code>world_worker.js</code> 里，主线程改 <code>WGE</code> 不会生效。
+    要改算法，先用 <code>WGRUN.run = S =&gt; WGE.generate(S)</code> 接管；
+    示例见 <code>mods/new-form.js</code>（新增"台地"场景）。
+  </div>
+
+  <p class="foot">
+    文档：<a href="./README.md" style="color:#9fb4c8">README</a> ·
+    <a href="./docs/01-architecture.md" style="color:#9fb4c8">架构</a> ·
+    <a href="./docs/02-generation.md" style="color:#9fb4c8">生成</a> ·
+    <a href="./docs/03-rendering.md" style="color:#9fb4c8">渲染</a> ·
+    <a href="./docs/04-extension.md" style="color:#9fb4c8">扩展</a> ·
+    <a href="./docs/05-license.md" style="color:#9fb4c8">授权</a>
+  </p>
+</div>
+</body>
+</html>

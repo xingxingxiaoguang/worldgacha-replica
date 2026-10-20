@@ -1,0 +1,13 @@
+# Original artifacts: private study only (see docs/05-license.md).
+/vendor/*
+!/vendor/README.md
+
+# Generated from vendor/ by scripts/split.mjs; derived from the original.
+/study/
+
+# Screenshots / A-B output that contain the original page.
+/verify/out/
+/verify/out*.png
+
+node_modules/
+.DS_Store

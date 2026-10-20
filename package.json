@@ -1,0 +1,16 @@
+{
+  "name": "worldgacha-replica",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local study replica of World Gacha: split study build, mod loader, clean-room mini implementation",
+  "scripts": {
+    "serve": "node scripts/serve.mjs 4173",
+    "split": "node scripts/split.mjs",
+    "shot": "node verify/shot.mjs",
+    "compare": "node verify/compare.mjs",
+    "verify": "node verify/compare.mjs castle 424242"
+  },
+  "keywords": ["procedural-generation", "threejs", "manga", "world-building", "reverse-engineering"],
+  "license": "SEE LICENSE IN docs/05-license.md"
+}

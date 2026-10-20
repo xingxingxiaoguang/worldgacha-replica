@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MINI WORLD · 净室重建</title>
+<style>
+  :root { color-scheme: dark; }
+  html, body { margin: 0; height: 100%; background: #14171c; }
+  #view { display: block; width: 100vw; height: 100vh; }
+  .panel {
+    position: fixed; left: 18px; top: 18px; z-index: 5;
+    width: 290px; padding: 16px 18px 14px;
+    border-radius: 14px;
+    background: rgba(18, 22, 28, .88);
+    border: 1px solid rgba(255,255,255,.09);
+    box-shadow: 0 18px 50px rgba(0,0,0,.45);
+    color: #e9e6df;
+    font: 13px/1.5 system-ui, -apple-system, "Hiragino Sans", "Microsoft YaHei", sans-serif;
+    backdrop-filter: blur(10px);
+  }
+  h1 { margin: 0 0 2px; font-size: 15px; letter-spacing: .18em; font-weight: 700; }
+  .sub { margin: 0 0 14px; color: #8e8a80; font-size: 11px; letter-spacing: .04em; }
+  label { display: block; margin: 10px 0 4px; color: #a9a49a; font-size: 11px; }
+  input[type=text], select {
+    width: 100%; box-sizing: border-box; padding: 7px 9px;
+    border-radius: 8px; border: 1px solid rgba(255,255,255,.12);
+    background: #0f1217; color: #f1eee6; font: inherit;
+  }
+  .row { display: flex; gap: 8px; margin-top: 12px; }
+  button {
+    flex: 1; padding: 9px 10px; border-radius: 9px; cursor: pointer;
+    border: 1px solid rgba(255,255,255,.12);
+    background: #222833; color: #eee9df; font: inherit;
+  }
+  button.primary { background: #e07b39; color: #17191d; border-color: transparent; font-weight: 700; }
+  button:hover { filter: brightness(1.08); }
+  .stat { margin-top: 12px; color: #7f8a99; font-size: 11px; min-height: 16px; }
+  .hint { margin-top: 10px; color: #6c7684; font-size: 10.5px; line-height: 1.5; }
+  .modes { display: flex; gap: 4px; margin-top: 6px; }
+  .modes button { padding: 6px 4px; font-size: 11px; }
+  .modes button.on { background: #3b4656; border-color: #6a7c93; }
+  input[type=range] { width: 100%; }
+</style>
+</head>
+<body>
+<canvas id="view"></canvas>
+
+<div class="panel">
+  <h1>MINI WORLD</h1>
+  <p class="sub">净室重建 · 地形 → 街区 → 体块 → 线/网点</p>
+
+  <label for="seed">SEED</label>
+  <input id="seed" type="text" value="424242">
+
+  <div class="row">
+    <button id="gen" class="primary">生成</button>
+    <button id="dice">🎲</button>
+  </div>
+
+  <label for="mode">显示</label>
+  <select id="mode">
+    <option value="linetone" selected>线稿 + 网点</option>
+    <option value="line">线稿</option>
+    <option value="colorline">彩色 + 线</option>
+    <option value="color">彩色</option>
+  </select>
+
+  <label for="cam">镜头</label>
+  <select id="cam">
+    <option value="aerial" selected>航拍</option>
+    <option value="high">高空</option>
+    <option value="street">街道视点</option>
+    <option value="top">正上方</option>
+  </select>
+
+  <label>轮廓 <span id="lwv">1.2</span> px</label>
+  <input id="lw" type="range" min="0.6" max="3" step="0.1" value="1.2">
+
+  <div class="row">
+    <button id="png">导出 PNG</button>
+  </div>
+
+  <div class="stat" id="stat"></div>
+  <div class="hint">拖动旋转 · 滚轮缩放 · 右键平移<br>MIT-style sample code — 随意改写。</div>
+</div>
+
+<script src="lib/three_hg.js"></script>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
